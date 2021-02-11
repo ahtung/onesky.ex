@@ -6,7 +6,7 @@ defmodule Onesky do
   @doc """
   The client
   """
-  def client() do
+  def client do
     timestamp = System.system_time(:second)
     dev_hash = Base.encode16(:erlang.md5("#{timestamp}#{api_secret()}"), case: :lower)
 
@@ -27,11 +27,11 @@ defmodule Onesky do
     Tesla.client(middleware, adapter)
   end
 
-  defp api_key() do
+  defp api_key do
     Application.get_env(:onesky, :api_key)
   end
 
-  defp api_secret() do
+  defp api_secret do
     Application.get_env(:onesky, :api_secret)
   end
 end
